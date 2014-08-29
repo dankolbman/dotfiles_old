@@ -1,0 +1,20 @@
+Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
+       , bgColor = "#000000"
+       , fgColor = "#E1AA5D"
+       , border = NoBorder
+       , borderColor = "#000000"
+       , position = Top
+       , lowerOnStart = True
+       , hideOnStart = False
+       , persistent = True
+       , commands = [ Run Network "enp5s0" ["-L", "8", "-H", "32", "-l", "#C9A34E", "-n", "#E1AA5D" ,"-h", "#A36666", "-t", "eth: <rx>:<tx>"] 10
+                    , Run Cpu ["-L","3","-H","50","--normal","#E1AA5D","--high","#E84F4F"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                    , Run CoreTemp ["-t", "Temp: <core0><fc=#4E9FB1>C</fc> <core1><fc=#4E9FB1>C</fc> <core2><fc=#4E9FB1>C</fc> <core3><fc=#4E9FB1>C</fc>"] 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %StdinReader% }{ %coretemp% <fc=#9B64FB>|</fc> %cpu% <fc=#9B64FB>|</fc> %memory% <fc=#9B64FB>|</fc> %enp5s0% <fc=#9B64FB>|</fc> %date%"
+       }
